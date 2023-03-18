@@ -48,6 +48,12 @@ func PreventSurroundingPre(b bool) Option {
 	}
 }
 
+func WithNopPreWrapper() Option {
+	return func(f *Formatter) {
+		f.preWrapper = nopPreWrapper
+	}
+}
+
 // InlineCode creates inline code wrapped in a code tag.
 func InlineCode(b bool) Option {
 	return func(f *Formatter) {
@@ -286,7 +292,9 @@ func (f *Formatter) writeHTML(w io.Writer, style *chroma.Style, tokens []chroma.
 
 		if !(f.preventSurroundingPre || f.inlineCode) {
 			// Start of Line
-			fmt.Fprint(w, `<span`)
+			fmt.Fprint(w, `<a`)
+
+			fmt.Fprintf(w, " %s%s", f.lineIDAttribute(line), f.lineTitleWithLinkIfNeeded(css, lineDigits, line))
 
 			if highlight {
 				// Line + LineHighlight
@@ -301,9 +309,9 @@ func (f *Formatter) writeHTML(w io.Writer, style *chroma.Style, tokens []chroma.
 			}
 
 			// Line number
-			if f.lineNumbers && !wrapInTable {
-				fmt.Fprintf(w, "<span%s%s>%s</span>", f.styleAttr(css, chroma.LineNumbers), f.lineIDAttribute(line), f.lineTitleWithLinkIfNeeded(css, lineDigits, line))
-			}
+			//if f.lineNumbers && !wrapInTable {
+			//	fmt.Fprintf(w, "<span%s%s>%s</span>", f.styleAttr(css, chroma.LineNumbers), f.lineIDAttribute(line), f.lineTitleWithLinkIfNeeded(css, lineDigits, line))
+			//}
 
 			fmt.Fprintf(w, `<span%s>`, f.styleAttr(css, chroma.CodeLine))
 		}
@@ -320,7 +328,7 @@ func (f *Formatter) writeHTML(w io.Writer, style *chroma.Style, tokens []chroma.
 		if !(f.preventSurroundingPre || f.inlineCode) {
 			fmt.Fprint(w, `</span>`) // End of CodeLine
 
-			fmt.Fprint(w, `</span>`) // End of Line
+			fmt.Fprint(w, `</a>`) // End of Line
 		}
 	}
 	fmt.Fprintf(w, f.preWrapper.End(true))
@@ -346,11 +354,13 @@ func (f *Formatter) lineIDAttribute(line int) string {
 }
 
 func (f *Formatter) lineTitleWithLinkIfNeeded(css map[chroma.TokenType]string, lineDigits, line int) string {
-	title := fmt.Sprintf("%*d", lineDigits, line)
 	if !f.linkableLineNumbers {
-		return title
+		return f.styleAttr(css, chroma.LineNumbers)
 	}
-	return fmt.Sprintf("<a%s href=\"#%s\">%s</a>", f.styleAttr(css, chroma.LineLink), f.lineID(line), title)
+
+	class := f.styleAttr(css, chroma.LineNumbers)
+	classes := class[:len(class)-1] + " " + f.styleAttr(css, chroma.Line)[8:]
+	return fmt.Sprintf("%s href=\"#%s\"", classes, f.lineID(line))
 }
 
 func (f *Formatter) lineID(line int) string {
@@ -513,9 +523,9 @@ func (f *Formatter) styleToCSS(style *chroma.Style) map[chroma.TokenType]string 
 	if f.wrapLongLines {
 		classes[chroma.PreWrapper] += `white-space: pre-wrap; word-break: break-word;`
 	}
-	lineNumbersStyle := `white-space: pre; -webkit-user-select: none; user-select: none; margin-right: 0.4em; padding: 0 0.4em 0 0.4em;`
+	lineNumbersStyle := `white-space: pre; margin-right: 0.4em; padding: 0 0.4em 0 0.4em;`
 	// All rules begin with default rules followed by user provided rules
-	classes[chroma.Line] = `display: flex;` + classes[chroma.Line]
+	classes[chroma.Line] = `display: flex; text-decoration: none; color: inherit; outline: none;` + classes[chroma.Line]
 	classes[chroma.LineNumbers] = lineNumbersStyle + classes[chroma.LineNumbers]
 	classes[chroma.LineNumbersTable] = lineNumbersStyle + classes[chroma.LineNumbersTable]
 	classes[chroma.LineTable] = "border-spacing: 0; padding: 0; margin: 0; border: 0;" + classes[chroma.LineTable]
