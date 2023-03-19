@@ -86,7 +86,7 @@ func (f *Formatter) writeSVG(w io.Writer, style *chroma.Style, tokens []chroma.T
 
 	fmt.Fprint(w, "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n")
 	fmt.Fprint(w, "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.0//EN\" \"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\">\n")
-	fmt.Fprintf(w, "<svg width=\"%dpx\" height=\"%dpx\" xmlns=\"http://www.w3.org/2000/svg\">\n", int(8.5*float64(maxLineWidth(lines))), 10+int(16.8*float64(len(lines)+1)))
+	fmt.Fprintf(w, "<svg width=\"%dpx\" height=\"%dpx\" xmlns=\"http://www.w3.org/2000/svg\">\n", 20+int(8.5*float64(maxLineWidth(lines))), 10+int(16.8*float64(len(lines)+1)))
 
 	if f.embeddedFont != "" {
 		f.writeFontStyle(w)
@@ -98,7 +98,7 @@ func (f *Formatter) writeSVG(w io.Writer, style *chroma.Style, tokens []chroma.T
 	f.writeTokenBackgrounds(w, lines, style)
 
 	for index, tokens := range lines {
-		fmt.Fprintf(w, "<text x=\"0\" y=\"%fem\" xml:space=\"preserve\">", 1.2*float64(index+1))
+		fmt.Fprintf(w, "<text x=\"10px\" y=\"%fem\" xml:space=\"preserve\">", 1.2*float64(index+1))
 
 		for _, token := range tokens {
 			text := escapeString(token.String())
