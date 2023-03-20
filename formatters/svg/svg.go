@@ -93,7 +93,7 @@ func (f *Formatter) writeSVG(w io.Writer, style *chroma.Style, tokens []chroma.T
 	}
 
 	fmt.Fprintf(w, "<rect width=\"100%%\" height=\"100%%\" fill=\"%s\"/>\n", style.Get(chroma.Background).Background.String())
-	fmt.Fprintf(w, "<g font-family=\"%s\" font-size=\"14px\" fill=\"%s\">\n", f.fontFamily, style.Get(chroma.Text).Colour.String())
+	fmt.Fprintf(w, "<g font-family=\"%s\" font-size=\"14px\" font-weight=\"600\" fill=\"%s\">\n", f.fontFamily, style.Get(chroma.Text).Colour.String())
 
 	f.writeTokenBackgrounds(w, lines, style)
 
