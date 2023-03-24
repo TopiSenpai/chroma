@@ -292,7 +292,7 @@ func (f *Formatter) writeHTML(w io.Writer, style *chroma.Style, tokens []chroma.
 
 		if !(f.preventSurroundingPre || f.inlineCode) {
 			// Start of Line
-			fmt.Fprint(w, `<a`)
+			fmt.Fprint(w, `<a draggable="false"`)
 
 			fmt.Fprintf(w, " %s%s", f.lineIDAttribute(line), f.lineTitleWithLinkIfNeeded(css, lineDigits, line))
 
@@ -525,7 +525,7 @@ func (f *Formatter) styleToCSS(style *chroma.Style) map[chroma.TokenType]string 
 	}
 	lineNumbersStyle := `white-space: pre; margin-right: 0.4em; padding: 0 0.4em 0 0.4em;`
 	// All rules begin with default rules followed by user provided rules
-	classes[chroma.Line] = `display: flex; text-decoration: none; color: inherit; outline: none;` + classes[chroma.Line]
+	classes[chroma.Line] = `display: flex; text-decoration: none; color: inherit; outline: none; cursor: text;` + classes[chroma.Line]
 	classes[chroma.LineNumbers] = lineNumbersStyle + classes[chroma.LineNumbers]
 	classes[chroma.LineNumbersTable] = lineNumbersStyle + classes[chroma.LineNumbersTable]
 	classes[chroma.LineTable] = "border-spacing: 0; padding: 0; margin: 0; border: 0;" + classes[chroma.LineTable]
