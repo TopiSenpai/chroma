@@ -86,19 +86,25 @@ func (f *Formatter) writeSVG(w io.Writer, style *chroma.Style, tokens []chroma.T
 
 	fmt.Fprint(w, "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n")
 	fmt.Fprint(w, "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.0//EN\" \"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\">\n")
-	fmt.Fprintf(w, "<svg width=\"%dpx\" height=\"%dpx\" xmlns=\"http://www.w3.org/2000/svg\">\n", 20+int(8.5*float64(maxLineWidth(lines))), 10+int(16.8*float64(len(lines)+1)))
+	fmt.Fprintf(w, "<svg xmlns=\"http://www.w3.org/2000/svg\">\n")
 
 	if f.embeddedFont != "" {
 		f.writeFontStyle(w)
 	}
 
-	fmt.Fprintf(w, "<rect width=\"100%%\" height=\"100%%\" fill=\"%s\"/>\n", style.Get(chroma.Background).Background.String())
+	fmt.Fprintf(w, "<rect width=\"100%%\" height=\"100%%\" border-radius=\"1em\" fill=\"%s\"/>\n", style.Get(chroma.Background).Background.String())
+
+	// add 3 svg circles like macos windows
+	fmt.Fprintf(w, "<circle cx=\"1.5em\" cy=\"1.45em\" r=\"0.5em\" fill=\"#fa6153\"/>\n")
+	fmt.Fprintf(w, "<circle cx=\"3em\" cy=\"1.45em\" r=\"0.5em\" fill=\"#f8c120\"/>\n")
+	fmt.Fprintf(w, "<circle cx=\"4.5em\" cy=\"1.45em\" r=\"0.5em\" fill=\"#2cc640\"/>\n")
+
 	fmt.Fprintf(w, "<g font-family=\"%s\" font-size=\"14px\" font-weight=\"600\" fill=\"%s\">\n", f.fontFamily, style.Get(chroma.Text).Colour.String())
 
 	f.writeTokenBackgrounds(w, lines, style)
 
 	for index, tokens := range lines {
-		fmt.Fprintf(w, "<text x=\"10px\" y=\"%fem\" xml:space=\"preserve\">", 1.2*float64(index+1))
+		fmt.Fprintf(w, "<text x=\"1em\" y=\"%fem\" xml:space=\"preserve\">", 1.2*float64(index+1)+3)
 
 		for _, token := range tokens {
 			text := escapeString(token.String())
