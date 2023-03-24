@@ -86,7 +86,7 @@ func (f *Formatter) writeSVG(w io.Writer, style *chroma.Style, tokens []chroma.T
 
 	fmt.Fprint(w, "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n")
 	fmt.Fprint(w, "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.0//EN\" \"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\">\n")
-	fmt.Fprintf(w, "<svg xmlns=\"http://www.w3.org/2000/svg\">\n")
+	fmt.Fprintf(w, "<svg width=\"%dpx\" height=\"%dpx\" xmlns=\"http://www.w3.org/2000/svg\">\n", 18+int(8.8*float64(maxLineWidth(lines)+1)), int(18*float64(len(lines)+3)))
 
 	if f.embeddedFont != "" {
 		f.writeFontStyle(w)
