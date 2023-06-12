@@ -292,7 +292,7 @@ func (f *Formatter) writeHTML(w io.Writer, style *chroma.Style, tokens []chroma.
 
 		if !(f.preventSurroundingPre || f.inlineCode) {
 			// Start of Line
-			fmt.Fprint(w, `<a draggable="false"`)
+			fmt.Fprint(w, `<span`)
 
 			fmt.Fprintf(w, " %s%s", f.lineIDAttribute(line), f.lineTitleWithLinkIfNeeded(css, lineDigits, line))
 
@@ -328,7 +328,7 @@ func (f *Formatter) writeHTML(w io.Writer, style *chroma.Style, tokens []chroma.
 		if !(f.preventSurroundingPre || f.inlineCode) {
 			fmt.Fprint(w, `</span>`) // End of CodeLine
 
-			fmt.Fprint(w, `</a>`) // End of Line
+			fmt.Fprint(w, `</span>`) // End of Line
 		}
 	}
 	fmt.Fprintf(w, f.preWrapper.End(true))
