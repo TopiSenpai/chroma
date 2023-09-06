@@ -3,7 +3,7 @@ package html
 import (
 	"bytes"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"regexp"
 	"strings"
 	"testing"
@@ -28,7 +28,7 @@ func BenchmarkHTMLFormatter(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		it, err := lexers.Get("go").Tokenise(nil, "package main\nfunc main()\n{\nprintln(`hello world`)\n}\n")
 		assert.NoError(b, err)
-		err = formatter.Format(ioutil.Discard, styles.Fallback, it)
+		err = formatter.Format(io.Discard, styles.Fallback, it)
 		assert.NoError(b, err)
 	}
 }
@@ -276,7 +276,7 @@ func TestWithPreWrapper(t *testing.T) {
 			return fmt.Sprintf("<foo%s id=\"code-%t\">", styleAttr, code)
 		},
 		end: func(code bool) string {
-			return fmt.Sprintf("</foo>")
+			return "</foo>"
 		},
 	}
 
