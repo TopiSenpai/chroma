@@ -1,4 +1,4 @@
-<style name="rrt">
+<style name="rrt" theme="dark">
   <entry type="Background" style="#f8f8f2 bg:#000000"/>
   <entry type="Keyword" style="#ff0000"/>
   <entry type="KeywordType" style="#ee82ee"/>

@@ -1,4 +1,4 @@
-<style name="vim">
+<style name="vim" theme="dark">
   <entry type="Error" style="border:#ff0000"/>
   <entry type="Background" style="#cccccc bg:#000000"/>
   <entry type="Keyword" style="#cdcd00"/>

@@ -1,4 +1,4 @@
-<style name="tango">
+<style name="tango" theme="light">
   <entry type="Other" style="#000000"/>
   <entry type="Error" style="#a40000 border:#ef2929"/>
   <entry type="Background" style="bg:#f8f8f8"/>

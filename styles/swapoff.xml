@@ -1,4 +1,4 @@
-<style name="swapoff">
+<style name="swapoff" theme="dark">
   <entry type="Error" style="#ff0000"/>
   <entry type="Background" style="#e5e5e5 bg:#000000"/>
   <entry type="Keyword" style="bold #ffffff"/>

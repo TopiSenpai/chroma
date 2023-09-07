@@ -1,4 +1,4 @@
-<style name="rainbow_dash">
+<style name="rainbow_dash" theme="light">
   <entry type="Error" style="#ffffff bg:#cc0000"/>
   <entry type="Background" style="bg:#ffffff"/>
   <entry type="Keyword" style="bold #2c5dcd"/>

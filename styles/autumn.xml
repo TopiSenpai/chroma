@@ -1,4 +1,4 @@
-<style name="autumn">
+<style name="autumn" theme="light">
   <entry type="Error" style="#ff0000 bg:#ffaaaa"/>
   <entry type="Background" style="bg:#ffffff"/>
   <entry type="Keyword" style="#0000aa"/>

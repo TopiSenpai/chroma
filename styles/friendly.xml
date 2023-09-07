@@ -1,4 +1,4 @@
-<style name="friendly">
+<style name="friendly" theme="light">
   <entry type="Error" style="border:#ff0000"/>
   <entry type="Background" style="bg:#f0f0f0"/>
   <entry type="Keyword" style="bold #007020"/>

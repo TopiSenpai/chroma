@@ -1,4 +1,4 @@
-<style name="native">
+<style name="native" theme="dark">
   <entry type="Error" style="#a61717 bg:#e3d2d2"/>
   <entry type="Background" style="#d0d0d0 bg:#202020"/>
   <entry type="Keyword" style="bold #6ab825"/>

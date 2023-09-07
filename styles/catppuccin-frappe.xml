@@ -1,4 +1,4 @@
-<style name="catppuccin-frappe">
+<style name="catppuccin-frappe" theme="dark">
   <entry type="Background" style="bg:#303446 #c6d0f5"/>
   <entry type="CodeLine" style="#c6d0f5"/>
   <entry type="Error" style="#e78284"/>

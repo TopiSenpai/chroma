@@ -1,4 +1,4 @@
-<style name="base16-snazzy">
+<style name="base16-snazzy" theme="dark">
   <entry type="Other" style="#e2e4e5"/>
   <entry type="Error" style="#ff5c57"/>
   <entry type="Background" style="bg:#282a36"/>

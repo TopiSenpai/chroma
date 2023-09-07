@@ -1,4 +1,4 @@
-<style name="perldoc">
+<style name="perldoc" theme="light">
   <entry type="Error" style="#a61717 bg:#e3d2d2"/>
   <entry type="Background" style="bg:#eeeedd"/>
   <entry type="Keyword" style="bold #8b008b"/>

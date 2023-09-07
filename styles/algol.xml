@@ -1,4 +1,4 @@
-<style name="algol">
+<style name="algol" theme="light">
   <entry type="Error" style="border:#ff0000"/>
   <entry type="Background" style="bg:#ffffff"/>
   <entry type="Keyword" style="bold underline"/>

@@ -1,4 +1,4 @@
-<style name="hr_high_contrast">
+<style name="hr_high_contrast" theme="light">
   <entry type="Other" style="#d5d500"/>
   <entry type="Background" style="#000000"/>
   <entry type="Keyword" style="#467faf"/>

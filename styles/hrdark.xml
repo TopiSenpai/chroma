@@ -1,4 +1,4 @@
-<style name="hrdark">
+<style name="hrdark" theme="light">
   <entry type="Other" style="#ffffff"/>
   <entry type="Background" style="#1d2432"/>
   <entry type="Keyword" style="#ff636f"/>

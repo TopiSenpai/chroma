@@ -1,4 +1,4 @@
-<style name="doom-one">
+<style name="doom-one" theme="dark">
   <entry type="Error" style="#b0c4de"/>
   <entry type="Background" style="#b0c4de bg:#282c34"/>
   <entry type="Keyword" style="#c678dd"/>

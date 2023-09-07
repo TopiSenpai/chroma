@@ -1,4 +1,4 @@
-<style name="vulcan">
+<style name="vulcan" theme="dark">
   <entry type="Other" style="#c9c9c9"/>
   <entry type="Error" style="#cf5967"/>
   <entry type="Background" style="bg:#282c34"/>

@@ -1,4 +1,4 @@
-<style name="pygments">
+<style name="pygments" theme="light">
   <entry type="Error" style="border:#ff0000"/>
   <entry type="Keyword" style="bold #008000"/>
   <entry type="KeywordPseudo" style="nobold"/>

@@ -1,4 +1,4 @@
-<style name="abap">
+<style name="abap" theme="light">
   <entry type="Error" style="#ff0000"/>
   <entry type="Background" style="bg:#ffffff"/>
   <entry type="Keyword" style="#0000ff"/>

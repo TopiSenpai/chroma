@@ -1,4 +1,4 @@
-<style name="lovelace">
+<style name="lovelace" theme="light">
   <entry type="Error" style="bg:#a848a8"/>
   <entry type="Background" style="bg:#ffffff"/>
   <entry type="Keyword" style="#2838b0"/>

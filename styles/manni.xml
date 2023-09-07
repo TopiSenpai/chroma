@@ -1,4 +1,4 @@
-<style name="manni">
+<style name="manni" theme="light">
   <entry type="Error" style="#aa0000 bg:#ffaaaa"/>
   <entry type="Background" style="bg:#f0f3f3"/>
   <entry type="Keyword" style="bold #006699"/>

@@ -1,4 +1,4 @@
-<style name="fruity">
+<style name="fruity" theme="dark">
   <entry type="Background" style="#ffffff bg:#111111"/>
   <entry type="Keyword" style="bold #fb660a"/>
   <entry type="KeywordPseudo" style="nobold"/>

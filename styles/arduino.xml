@@ -1,4 +1,4 @@
-<style name="arduino">
+<style name="arduino" theme="light">
   <entry type="Error" style="#a61717"/>
   <entry type="Background" style="bg:#ffffff"/>
   <entry type="Keyword" style="#728e00"/>

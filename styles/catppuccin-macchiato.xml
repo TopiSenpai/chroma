@@ -1,4 +1,4 @@
-<style name="catppuccin-macchiato">
+<style name="catppuccin-macchiato" theme="dark">
   <entry type="Background" style="bg:#24273a #cad3f5"/>
   <entry type="CodeLine" style="#cad3f5"/>
   <entry type="Error" style="#ed8796"/>

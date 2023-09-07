@@ -1,4 +1,4 @@
-<style name="nord">
+<style name="nord" theme="dark">
   <entry type="Error" style="#bf616a"/>
   <entry type="Background" style="#d8dee9 bg:#2e3440"/>
   <entry type="Keyword" style="bold #81a1c1"/>

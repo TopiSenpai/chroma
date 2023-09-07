@@ -1,4 +1,4 @@
-<style name="witchhazel">
+<style name="witchhazel" theme="dark">
   <entry type="Error" style="#960050 bg:#1e0010"/>
   <entry type="Background" style="bg:#433e56"/>
   <entry type="Keyword" style="#c2ffdf"/>

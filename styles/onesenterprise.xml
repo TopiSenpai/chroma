@@ -1,4 +1,4 @@
-<style name="onesenterprise">
+<style name="onesenterprise" theme="light">
   <entry type="Keyword" style="#ff0000"/>
   <entry type="Name" style="#0000ff"/>
   <entry type="LiteralString" style="#000000"/>

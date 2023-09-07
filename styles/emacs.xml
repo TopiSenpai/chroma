@@ -1,4 +1,4 @@
-<style name="emacs">
+<style name="emacs" theme="light">
   <entry type="Error" style="border:#ff0000"/>
   <entry type="Background" style="bg:#f8f8f8"/>
   <entry type="Keyword" style="bold #aa22ff"/>

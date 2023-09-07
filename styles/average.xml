@@ -1,4 +1,4 @@
-<style name="average">
+<style name="average" theme="dark">
   <entry type="Other" style="#757575"/>
   <entry type="Error" style="#ec0000"/>
   <entry type="Background" style="bg:#000000"/>

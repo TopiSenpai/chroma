@@ -1,4 +1,4 @@
-<style name="pastie">
+<style name="pastie" theme="light">
   <entry type="Error" style="#a61717 bg:#e3d2d2"/>
   <entry type="Background" style="bg:#ffffff"/>
   <entry type="Keyword" style="bold #008800"/>

@@ -1,4 +1,4 @@
-<style name="dracula">
+<style name="dracula" theme="dark">
   <entry type="Other" style="#f8f8f2"/>
   <entry type="Error" style="#f8f8f2"/>
   <entry type="Background" style="bg:#282a36"/>

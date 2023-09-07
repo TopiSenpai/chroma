@@ -1,4 +1,4 @@
-<style name="vs">
+<style name="vs" theme="light">
   <entry type="Error" style="border:#ff0000"/>
   <entry type="Background" style="bg:#ffffff"/>
   <entry type="Keyword" style="#0000ff"/>

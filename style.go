@@ -149,11 +149,12 @@ func (s StyleEntry) IsZero() bool {
 type StyleBuilder struct {
 	entries map[TokenType]string
 	name    string
+	theme   string
 	parent  *Style
 }
 
-func NewStyleBuilder(name string) *StyleBuilder {
-	return &StyleBuilder{name: name, entries: map[TokenType]string{}}
+func NewStyleBuilder(name string, theme string) *StyleBuilder {
+	return &StyleBuilder{name: name, theme: theme, entries: map[TokenType]string{}}
 }
 
 func (s *StyleBuilder) AddAll(entries StyleEntries) *StyleBuilder {
@@ -240,13 +241,13 @@ func MustNewXMLStyle(r io.Reader) *Style {
 }
 
 // NewStyle creates a new style definition.
-func NewStyle(name string, entries StyleEntries) (*Style, error) {
-	return NewStyleBuilder(name).AddAll(entries).Build()
+func NewStyle(name string, theme string, entries StyleEntries) (*Style, error) {
+	return NewStyleBuilder(name, theme).AddAll(entries).Build()
 }
 
 // MustNewStyle creates a new style or panics.
-func MustNewStyle(name string, entries StyleEntries) *Style {
-	style, err := NewStyle(name, entries)
+func MustNewStyle(name string, theme string, entries StyleEntries) *Style {
+	style, err := NewStyle(name, theme, entries)
 	if err != nil {
 		panic(err)
 	}
@@ -258,6 +259,7 @@ func MustNewStyle(name string, entries StyleEntries) *Style {
 // See http://pygments.org/docs/styles/ for details. Semantics are intended to be identical.
 type Style struct {
 	Name    string
+	Theme   string
 	entries map[TokenType]StyleEntry
 	parent  *Style
 }
@@ -267,7 +269,10 @@ func (s *Style) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
 		return fmt.Errorf("cannot marshal style with parent")
 	}
 	start.Name = xml.Name{Local: "style"}
-	start.Attr = []xml.Attr{{Name: xml.Name{Local: "name"}, Value: s.Name}}
+	start.Attr = []xml.Attr{
+		{Name: xml.Name{Local: "name"}, Value: s.Name},
+		{Name: xml.Name{Local: "theme"}, Value: s.Theme},
+	}
 	if err := e.EncodeToken(start); err != nil {
 		return err
 	}
@@ -297,12 +302,17 @@ func (s *Style) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	for _, attr := range start.Attr {
 		if attr.Name.Local == "name" {
 			s.Name = attr.Value
+		} else if attr.Name.Local == "theme" {
+			s.Theme = attr.Value
 		} else {
 			return fmt.Errorf("unexpected attribute %s", attr.Name.Local)
 		}
 	}
 	if s.Name == "" {
 		return fmt.Errorf("missing style name attribute")
+	}
+	if s.Theme == "" {
+		return fmt.Errorf("missing style theme attribute")
 	}
 	s.entries = map[TokenType]StyleEntry{}
 	for {
