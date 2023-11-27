@@ -3,42 +3,70 @@ package styles
 import (
 	"embed"
 	"io/fs"
+	"path/filepath"
 	"sort"
 
 	"github.com/alecthomas/chroma/v2"
+	"github.com/alecthomas/chroma/v2/base16"
 )
 
-//go:embed *.xml
+//go:embed embedded
 var embedded embed.FS
 
 // Registry of Styles.
 var Registry = func() map[string]*chroma.Style {
 	registry := map[string]*chroma.Style{}
 	// Register all embedded styles.
-	files, err := fs.ReadDir(embedded, ".")
+	embeddedSub, err := fs.Sub(embedded, "embedded")
 	if err != nil {
 		panic(err)
 	}
-	for _, file := range files {
-		if file.IsDir() {
-			continue
-		}
-		r, err := embedded.Open(file.Name())
-		if err != nil {
-			panic(err)
-		}
-		style, err := chroma.NewXMLStyle(r)
-		if err != nil {
-			panic(err)
-		}
+	styles, err := LoadFromFS(embeddedSub)
+	if err != nil {
+		panic(err)
+	}
+	for _, style := range styles {
 		registry[style.Name] = style
-		_ = r.Close()
 	}
 	return registry
 }()
 
 // Fallback style. Reassign to change the default fallback style.
 var Fallback = Registry["swapoff"]
+
+func LoadFromFS(fsys fs.FS) ([]*chroma.Style, error) {
+	files, err := fs.ReadDir(fsys, ".")
+	if err != nil {
+		return nil, err
+	}
+
+	styles := make([]*chroma.Style, 0, len(files))
+	for _, file := range files {
+		if file.IsDir() {
+			continue
+		}
+
+		r, err := fsys.Open(file.Name())
+		if err != nil {
+			return nil, err
+		}
+
+		var style *chroma.Style
+		switch filepath.Ext(file.Name()) {
+		case ".xml":
+			style, err = chroma.NewXMLStyle(r)
+		case ".yaml", ".yml":
+			style, err = base16.NewStyle(r)
+		}
+		if err != nil {
+			return nil, err
+		}
+
+		styles = append(styles, style)
+	}
+
+	return styles, nil
+}
 
 // Register a chroma.Style.
 func Register(style *chroma.Style) *chroma.Style {

@@ -208,6 +208,7 @@ func (s *StyleBuilder) Transform(transform func(StyleEntry) StyleEntry) *StyleBu
 func (s *StyleBuilder) Build() (*Style, error) {
 	style := &Style{
 		Name:    s.name,
+		Theme:   s.theme,
 		entries: map[TokenType]StyleEntry{},
 		parent:  s.parent,
 	}
@@ -379,6 +380,7 @@ func (s *Style) Types() []TokenType {
 func (s *Style) Builder() *StyleBuilder {
 	return &StyleBuilder{
 		name:    s.Name,
+		theme:   s.Theme,
 		entries: map[TokenType]string{},
 		parent:  s,
 	}
