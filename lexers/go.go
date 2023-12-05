@@ -17,6 +17,12 @@ var Go = Register(MustNewLexer(
 	},
 	goRules,
 ).SetAnalyser(func(text string) float32 {
+	if strings.Contains(text, "package ") && strings.Contains(text, "func main()") {
+		return 1.0
+	}
+	if strings.Contains(text, "package main") {
+		return 0.8
+	}
 	if strings.Contains(text, "fmt.") && strings.Contains(text, "package ") {
 		return 0.5
 	}
