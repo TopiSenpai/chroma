@@ -20,6 +20,9 @@ var Go = Register(MustNewLexer(
 	if strings.Contains(text, "package ") && strings.Contains(text, "func main()") {
 		return 1.0
 	}
+	if strings.Contains(text, "package ") && strings.Contains(text, "import (") {
+		return 0.9
+	}
 	if strings.Contains(text, "package main") {
 		return 0.8
 	}
