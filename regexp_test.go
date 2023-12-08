@@ -3,7 +3,7 @@ package chroma
 import (
 	"testing"
 
-	assert "github.com/alecthomas/assert/v2"
+	"github.com/alecthomas/assert/v2"
 )
 
 func mustNewLexer(t *testing.T, config *Config, rules Rules) *RegexLexer { // nolint: forbidigo

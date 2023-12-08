@@ -3,7 +3,7 @@ package chroma
 import (
 	"testing"
 
-	assert "github.com/alecthomas/assert/v2"
+	"github.com/alecthomas/assert/v2"
 )
 
 func TestRemappingLexer(t *testing.T) {

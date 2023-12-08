@@ -8,7 +8,7 @@ import (
 	"regexp"
 	"testing"
 
-	assert "github.com/alecthomas/assert/v2"
+	"github.com/alecthomas/assert/v2"
 )
 
 func TestEmitterSerialisationRoundTrip(t *testing.T) {

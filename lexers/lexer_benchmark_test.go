@@ -3,10 +3,10 @@ package lexers_test
 import (
 	"testing"
 
-	assert "github.com/alecthomas/assert/v2"
+	"github.com/alecthomas/assert/v2"
 
-	"github.com/alecthomas/chroma/v2"
-	"github.com/alecthomas/chroma/v2/lexers"
+	"github.com/topi314/chroma/v2"
+	"github.com/topi314/chroma/v2/lexers"
 )
 
 const lexerBenchSource = `/*

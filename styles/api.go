@@ -6,8 +6,8 @@ import (
 	"path/filepath"
 	"sort"
 
-	"github.com/alecthomas/chroma/v2"
-	"github.com/alecthomas/chroma/v2/base16"
+	"github.com/topi314/chroma/v2"
+	"github.com/topi314/chroma/v2/base16"
 )
 
 //go:embed embedded

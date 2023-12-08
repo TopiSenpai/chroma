@@ -4,8 +4,8 @@ import (
 	"strings"
 	"testing"
 
-	assert "github.com/alecthomas/assert/v2"
-	"github.com/alecthomas/chroma/v2"
+	"github.com/alecthomas/assert/v2"
+	"github.com/topi314/chroma/v2"
 )
 
 func TestClosestColour(t *testing.T) {
@@ -17,7 +17,7 @@ func TestNoneColour(t *testing.T) {
 	formatter := TTY256
 	tokenType := chroma.None
 
-	style, err := chroma.NewStyle("test", chroma.StyleEntries{
+	style, err := chroma.NewStyle("test", "dark", chroma.StyleEntries{
 		chroma.Background: "#D0ab1e",
 	})
 	assert.NoError(t, err)

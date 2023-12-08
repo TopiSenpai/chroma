@@ -4,11 +4,11 @@ import (
 	"encoding/xml"
 	"testing"
 
-	assert "github.com/alecthomas/assert/v2"
+	"github.com/alecthomas/assert/v2"
 )
 
 func TestStyleInherit(t *testing.T) {
-	s, err := NewStyle("test", StyleEntries{
+	s, err := NewStyle("test", "dark", StyleEntries{
 		Name:         "bold #f00",
 		NameVariable: "#fff",
 	})
@@ -17,7 +17,7 @@ func TestStyleInherit(t *testing.T) {
 }
 
 func TestStyleColours(t *testing.T) {
-	s, err := NewStyle("test", StyleEntries{
+	s, err := NewStyle("test", "dark", StyleEntries{
 		Name: "#f00 bg:#001 border:#ansiblue",
 	})
 	assert.NoError(t, err)
@@ -25,7 +25,7 @@ func TestStyleColours(t *testing.T) {
 }
 
 func TestStyleClone(t *testing.T) {
-	parent, err := NewStyle("test", StyleEntries{
+	parent, err := NewStyle("test", "dark", StyleEntries{
 		Background: "bg:#ffffff",
 	})
 	assert.NoError(t, err)
@@ -38,7 +38,7 @@ func TestStyleClone(t *testing.T) {
 }
 
 func TestSynthesisedStyleEntries(t *testing.T) {
-	style, err := NewStyle("test", StyleEntries{
+	style, err := NewStyle("test", "dark", StyleEntries{
 		Background: "bg:#ffffff",
 	})
 	assert.NoError(t, err)
@@ -51,7 +51,7 @@ func TestSynthesisedStyleEntries(t *testing.T) {
 }
 
 func TestSynthesisedStyleClone(t *testing.T) {
-	style, err := NewStyle("test", StyleEntries{
+	style, err := NewStyle("test", "dark", StyleEntries{
 		Background:    "bg:#ffffff",
 		LineHighlight: "bg:#ffffff",
 		LineNumbers:   "bg:#fffff1",
@@ -66,7 +66,7 @@ func TestSynthesisedStyleClone(t *testing.T) {
 }
 
 func TestStyleBuilderTransform(t *testing.T) {
-	orig, err := NewStyle("test", StyleEntries{
+	orig, err := NewStyle("test", "dark", StyleEntries{
 		Name:         "#000",
 		NameVariable: "bold #f00",
 	})
@@ -104,7 +104,7 @@ func TestStyleBuilderTransform(t *testing.T) {
 }
 
 func TestStyleMarshaller(t *testing.T) {
-	expected, err := NewStyle("test", StyleEntries{
+	expected, err := NewStyle("test", "dark", StyleEntries{
 		Whitespace: "bg:#ffffff",
 		Text:       "#000000 underline",
 	})

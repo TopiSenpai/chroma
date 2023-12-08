@@ -5,7 +5,7 @@ import (
 	"io"
 	"math"
 
-	"github.com/alecthomas/chroma/v2"
+	"github.com/topi314/chroma/v2"
 )
 
 type ttyTable struct {

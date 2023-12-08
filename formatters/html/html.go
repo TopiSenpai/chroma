@@ -7,7 +7,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/alecthomas/chroma/v2"
+	"github.com/topi314/chroma/v2"
 )
 
 // Option sets an option of the HTML formatter.
@@ -309,9 +309,9 @@ func (f *Formatter) writeHTML(w io.Writer, style *chroma.Style, tokens []chroma.
 			}
 
 			// Line number
-			//if f.lineNumbers && !wrapInTable {
+			// if f.lineNumbers && !wrapInTable {
 			//	fmt.Fprintf(w, "<span%s%s>%s</span>", f.styleAttr(css, chroma.LineNumbers), f.lineIDAttribute(line), f.lineTitleWithLinkIfNeeded(css, lineDigits, line))
-			//}
+			// }
 
 			fmt.Fprintf(w, `<span%s>`, f.styleAttr(css, chroma.CodeLine))
 		}
