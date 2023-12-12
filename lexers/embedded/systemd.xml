@@ -17,7 +17,6 @@
     <filename>*.swap</filename>
     <filename>*.target</filename>
     <filename>*.timer</filename>
-    <mime_type>text/plain</mime_type>
   </config>
   <rules>
     <state name="root">
