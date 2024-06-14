@@ -64,7 +64,7 @@ func goRules() Rules {
 			{`"(\\\\|\\"|[^"])*"`, LiteralString, nil},
 			{`(<<=|>>=|<<|>>|<=|>=|&\^=|&\^|\+=|-=|\*=|/=|%=|&=|\|=|&&|\|\||<-|\+\+|--|==|!=|:=|\.\.\.|[+\-*/%&])`, Operator, nil},
 			{`([a-zA-Z_]\w*)(\s*)(\()`, ByGroups(NameFunction, UsingSelf("root"), Punctuation), nil},
-			{`[|^<>=!()\[\]{}.,;:]`, Punctuation, nil},
+			{`[|^<>=!()\[\]{}.,;:~]`, Punctuation, nil},
 			{`[^\W\d]\w*`, NameOther, nil},
 		},
 	}
